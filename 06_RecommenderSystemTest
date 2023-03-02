@@ -1,0 +1,19 @@
+Step 6: Recommender System Test
+
+A recommendation system test will be performed for a randomly selected user.
+
+# Selecting a random user
+usuario_id = np.random.choice(usuarios['UsuárioID'])
+
+# Displaying user information
+print('Nome:', usuarios.loc[usuarios['UsuárioID'] == usuario_id]['Nome'].values[0])
+print('Idade:', usuarios.loc[usuarios['UsuárioID'] == usuario_id]['Idade'].values[0])
+print('Gênero Favorito:', usuarios.loc[usuarios['UsuárioID'] == usuario_id]['Gênero Favorito'].values[0])
+print()
+
+# Showing recommended movies
+filmes_recomendados = recomendar_filmes(usuario_id)
+print('Filmes Recomendados:')
+for filme_id in filmes_recomendados:
+    titulo = filmes.loc[filmes['FilmeID'] == filme_id+1]['Título'].values[0]
+    genero = filmes
