@@ -1,0 +1,2 @@
+genero = filmes.loc[filmes['FilmeID'] == filme_id+1]['Gênero'].values[0]
+print(f'[{filme_id+1}] {titulo} ({genero})')
