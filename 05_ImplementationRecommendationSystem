@@ -1,0 +1,18 @@
+Step 5: Implementation of the Recommendation System
+
+A function will be created that takes a user's ID as input and returns a list of recommended movie IDs based on the ratings of other users with similar tastes.
+
+def recomendar_filmes(usuario_id):
+    # Finding similar users
+    similaridade = similaridade_usuarios[usuario_id-1]
+    usuarios_similares = np.argsort(similaridade)[::-1][1:]
+
+    # Selecting the movies best rated by similar users
+    avaliacoes_similares = matriz_avaliacoes[usuarios_similares].toarray()
+    filmes_recomendados = np.argsort(np.sum(avaliacoes_similares, axis=0))[::-1]
+
+    # Removing movies already seen by the user
+    filmes_vistos = avaliacoes[avaliacoes['UsuárioID'] == usuario_id]['FilmeID'].tolist()
+    filmes_recomendados = [f for f in filmes_recomendados if f not in filmes_vistos]
+
+    return filmes_recomendados[:10]
