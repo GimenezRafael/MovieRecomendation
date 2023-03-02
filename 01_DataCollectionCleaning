@@ -1,0 +1,26 @@
+Step 1: Data Collection and Cleaning
+
+Movie and user data will be collected from a CSV file. For this example, the data will be randomly generated.
+
+import pandas as pd
+import numpy as np
+
+# Generating random data for movies
+filmes = pd.DataFrame({
+    'FilmeID': np.arange(1, 101),
+    'Título': ['Filme ' + str(i) for i in range(1, 101)],
+    'Gênero': ['Ação', 'Comédia', 'Drama', 'Ficção Científica', 'Romance']*20,
+    'Diretor': ['Diretor ' + str(i) for i in range(1, 6)]*20,
+    'Atores': [['Ator ' + str(i), 'Atriz ' + str(i+5)] for i in range(1, 11)]*10,
+    'Sinopse': ['Sinopse ' + str(i) for i in range(1, 101)],
+    'Classificação': np.random.choice([1, 2, 3, 4, 5], size=100)
+})
+
+# Generating random data for users
+usuarios = pd.DataFrame({
+    'UsuárioID': np.arange(1, 101),
+    'Nome': ['Usuário ' + str(i) for i in range(1, 101)],
+    'Idade': np.random.choice(np.arange(18, 61), size=100),
+    'Gênero Favorito': np.random.choice(['Ação', 'Comédia', 'Drama', 'Ficção Científica', 'Romance'], size=100),
+    'Histórico de Visualização': [[] for i in range(100)]
+})
