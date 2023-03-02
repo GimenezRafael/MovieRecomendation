@@ -1,0 +1,15 @@
+Step 2: Data Analysis and Visualization
+
+The Matplotlib library will be used to create a bar chart with the count of movies by genre.
+
+import matplotlib.pyplot as plt
+
+# Movie count by genre
+filmes_por_genero = filmes.groupby('Gênero').size()
+
+# Bar chart of movie counts by genre
+plt.bar(filmes_por_genero.index, filmes_por_genero.values)
+plt.title('Contagem de Filmes por Gênero')
+plt.xlabel('Gênero')
+plt.ylabel('Contagem')
+plt.show()
