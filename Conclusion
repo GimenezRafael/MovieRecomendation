@@ -1,0 +1,6 @@
+We can see that the recommendation system was able to recommend movies based on the ratings of other users with similar tastes to the selected user.
+Recommendations include comedy movies, which is the selected user's favorite genre, as well as other genres like musical, adventure, drama, and crime.
+
+Conclusion:
+In this project, we implement a movie recommendation system using item-based collaborative filtering algorithm and cosine similarity
+The system was tested for a randomly selected user and was able to recommend movies based on the ratings of other users with similar tastes.
