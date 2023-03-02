@@ -1,0 +1,16 @@
+Step 3: Data Pre-Processing
+
+The data will be pre-processed using the Pandas library to transform the information into a tabular format,
+with each movie represented by a line and each attribute represented by a column.
+
+from sklearn.preprocessing import MultiLabelBinarizer
+
+# Turning the list of actors into binary columns
+mlb = MultiLabelBinarizer()
+filmes = filmes.join(pd.DataFrame(mlb.fit_transform(filmes['Atores']),
+                                   columns=mlb.classes_,
+                                   index=filmes.index))
+
+# Removing unused columns
+filmes.drop(['Atores', 'Sinopse'], axis=1, inplace=True)
+usuarios.drop('Histórico de Visualização', axis=1, inplace=True)
