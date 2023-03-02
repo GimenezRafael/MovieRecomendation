@@ -1,0 +1,24 @@
+Step 4: Selection of Machine Learning Algorithms
+
+The collaborative filtering algorithm will be used, which uses the user ratings matrix to make predictions of movie ratings for users based on the ratings 
+of other users with similar tastes.
+
+from sklearn.metrics.pairwise import cosine_similarity
+from scipy.sparse import csr_matrix
+
+# Building the user rating matrix
+avaliacoes = pd.DataFrame(columns=['UsuárioID', 'FilmeID', 'Avaliação'])
+for usuario_id in usuarios['UsuárioID']:
+    for filme_id in filmes['FilmeID']:
+        avaliacao = np.random.choice([0, 1, 2, 3, 4, 5])
+        avaliacoes = avaliacoes.append({'UsuárioID': usuario_id,
+                                        'FilmeID': filme_id,
+                                        'Avaliação': avaliacao}, ignore_index=True)
+
+avaliacoes = avaliacoes.astype({'UsuárioID': int, 'FilmeID': int, 'Avaliação': int})
+
+# Creating a sparse matrix of user ratings
+matriz_avaliacoes = csr_matrix((avaliacoes['Avaliação'], (avaliacoes['UsuárioID']-1, avaliacoes['FilmeID']-1)))
+
+# Calculating similarity between users
+similaridade_usuarios = cosine_similarity(matriz_avaliacoes)
